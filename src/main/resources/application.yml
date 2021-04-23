@@ -1,0 +1,5 @@
+server:
+  port: 33300
+spring:
+  application:
+    name: learning-algorithm
