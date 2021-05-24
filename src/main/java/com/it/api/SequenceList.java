@@ -24,13 +24,24 @@ public class SequenceList<T> implements Iterable<T>, Serializable {
 
     /**
      *
+     * 功能说明: <br>
+     *     构造方法 默认大小为10
+     */
+    public SequenceList(){
+        this(10);
+    }
+    /**
+     *
      * @Param [capacity]
      * 功能说明: <br>
      *     构造方法
      */
     public SequenceList(int capacity){
-        eles = (T[])new Object[capacity];
-        N = 0;
+        if (capacity <= 0) {
+            throw new RuntimeException("声明空间不能小于等于0");
+        }
+        this.eles = (T[])new Object[capacity];
+        this.N = 0;
     }
 
     /**
