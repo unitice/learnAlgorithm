@@ -1,5 +1,6 @@
 package com.it.api;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
@@ -9,8 +10,10 @@ import java.util.Iterator;
  * @date 2021/5/24 13:43
  * 类说明: <br> 顺序表实现类
  */
-public class SequenceList<T> implements Iterable<T>{
+public class SequenceList<T> implements Iterable<T>, Serializable {
 
+
+    private static final long serialVersionUID = -5351796034000534723L;
     /**存储元素的数组*/
     private T[] eles;
     /**记录当前顺序表中的元素个数*/
