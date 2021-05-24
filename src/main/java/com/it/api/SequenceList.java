@@ -1,5 +1,9 @@
 package com.it.api;
 
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
 /**
  * @author LY
  * @PackageName:com.it.api
@@ -7,7 +11,7 @@ package com.it.api;
  * @date 2021/5/24 13:43
  * 类说明: <br> 顺序表实现类
  */
-public class SequenceList<T> {
+public class SequenceList<T> implements Iterable<T>{
 
     /**存储元素的数组*/
     private T[] eles;
@@ -168,4 +172,26 @@ public class SequenceList<T> {
     public Object[] getEles() {
         return eles;
     }
+
+
+    @Override
+    public Iterator<T> iterator() {
+        return new SIterator();
+    }
+
+    private class SIterator implements Iterator{
+        private int cur;
+        public SIterator() {
+            this.cur = 0;
+        }
+        @Override
+        public boolean hasNext(){
+            return cur < N;
+        }
+        @Override
+        public T next() {
+            return eles[cur++];
+        }
+    }
+
 }
