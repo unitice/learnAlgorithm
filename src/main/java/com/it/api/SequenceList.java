@@ -1,8 +1,6 @@
 package com.it.api;
 
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 /**
  * @author LY
@@ -17,11 +15,13 @@ public class SequenceList<T> implements Iterable<T>{
     private T[] eles;
     /**记录当前顺序表中的元素个数*/
     private int N;
+    /**定义数组的长度阈值*/
+    private final int four = 4;
+    private final int twe = 2;
 
     /**
      *
      * @Param [capacity]
-     * @return
      * 功能说明: <br>
      *     构造方法
      */
@@ -78,7 +78,8 @@ public class SequenceList<T> implements Iterable<T>{
      */
     public void insert(T t){
         if (N == eles.length){
-            throw new RuntimeException("当前表已满！");
+            resize(eles.length * twe);
+//            throw new RuntimeException("当前表已满！");
         }
         eles[N++] = t;
     }
@@ -91,7 +92,8 @@ public class SequenceList<T> implements Iterable<T>{
      */
     public void insert(int i, T t){
         if (i == eles.length){
-            throw new RuntimeException("当前表已满！");
+//            throw new RuntimeException("当前表已满！");
+            resize(eles.length * this.twe);
         }
         if (i < 0 || i > N) {
             throw new RuntimeException("插入位置不合法！");
@@ -114,7 +116,13 @@ public class SequenceList<T> implements Iterable<T>{
      */
     public void insert(T[] ts){
         if ((eles.length - N) < ts.length){
-            throw new RuntimeException("插入数组过长，无法插入");
+            // 如果带插入数组长度低于两倍线性表长度将线性表扩展为原长度二倍
+            if (ts.length < (eles.length + eles.length - N)){
+                resize(eles.length + eles.length);
+            } else {
+                // 否则扩展为带插入数组长度加原数组长度
+                resize(eles.length + ts.length);
+            }
         }
         // 将数组后面添加想数据 src表示源数组(数据源)，srcPos表示源数组要复制的起始位置，destPos  目标数组的起始位置.，desc表示目标数组，length表示要复制的长度。
         System.arraycopy( ts, 0,eles, N, ts.length);
@@ -142,6 +150,9 @@ public class SequenceList<T> implements Iterable<T>{
         eles[N-1] = null;
         // 当前元素数量-1
         N--;
+        if (N < eles.length/this.four){
+            resize(eles.length/this.four);
+        }
         return result;
     }
 
@@ -192,6 +203,15 @@ public class SequenceList<T> implements Iterable<T>{
         public T next() {
             return eles[cur++];
         }
+    }
+
+    private void resize(int newSize){
+        // 记录旧数组
+        T[] temp = eles;
+        // 创建新数组
+        eles = (T[])new Object[newSize];
+        // 将原线性表的值copy到新线性表
+        System.arraycopy(temp,0,eles,0,this.N);
     }
 
 }
