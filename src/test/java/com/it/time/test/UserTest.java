@@ -22,6 +22,7 @@ public class UserTest {
 
     @Test
     public void test01(){
+        List lists = new ArrayList<>();
         User user = new User("ajf",12);
         User user1 = new User("jly",12);
         User user2 = new User("小明",19);
@@ -39,13 +40,16 @@ public class UserTest {
 
     @Test
     public void test02() {
-        SequenceList<String> sequenceList = new SequenceList<>(10);
+        SequenceList<String> sequenceList = new SequenceList<>(3);
         sequenceList.insert("君落羽");
         sequenceList.insert(new String[] {"乐乐","风行","光影"});
         sequenceList.insert(4,"纷纷");
-        System.out.println(sequenceList.length());
         Object[] eles = sequenceList.getEles();
-        print(eles);
+        System.out.println(eles.length);
+        for (Object a : sequenceList){
+            System.out.println(a +" ");
+        }
+        System.out.println(sequenceList.length());
     }
 
 
