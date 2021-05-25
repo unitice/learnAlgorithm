@@ -1,6 +1,7 @@
 package com.it.time.test;
 
 import com.it.Entity.User;
+import com.it.algorithm.test.DataCheckerUtils;
 import com.it.api.SequenceList;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,9 +54,18 @@ public class UserTest {
     }
 
 
-    public void print(Object[] arr){
-        for (Object t : arr) {
-            System.out.print(t + " ");
+    @Test
+    public void test03(){
+        int[] aa = DataCheckerUtils.genertateRandomArray();
+        int[] aa2 = new int[1000000];
+        long l = System.currentTimeMillis();
+        System.out.println(l);
+        System.arraycopy(aa, 0, aa2, 0, aa.length);
+        for (int i = 0; i < aa.length ; i++){
+            aa2[i] = aa[i];
         }
+        long l1 = System.currentTimeMillis();
+        System.out.println(l1 - l);
+        System.out.println(l1);
     }
 }
