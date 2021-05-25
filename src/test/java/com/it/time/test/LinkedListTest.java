@@ -97,6 +97,10 @@ public class LinkedListTest {
     }
 
 
+    /**
+     * 功能说明: <br>
+     *    单向链表测试
+     */
     @Test
     public void test02(){
         LinkList<String> list = new LinkList<>();
@@ -121,6 +125,10 @@ public class LinkedListTest {
         }
     }
 
+    /**
+     * 功能说明: <br>
+     *    双向链表测试
+     */
     @Test
     public void test03(){
         TwoWayLinkList<String> list = new TwoWayLinkList<>();
@@ -155,6 +163,10 @@ public class LinkedListTest {
     }
 
 
+    /**
+     * 功能说明: <br>
+     *    约瑟夫问题解决实现通过链表实现
+     */
     @Test
     public void test04(){
         // 1.构建循环链表
