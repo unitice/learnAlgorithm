@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @PackageName:com.it.api
  * @ClassName:LinkList
  * @date 2021/5/25 11:44
- * 类说明: <br> 链表实现线性表
+ * 类说明: <br> 链表实现线性表（单项链表）
  */
 public class LinkList<T> implements Iterable<T>, Serializable {
     private static final long serialVersionUID = -421727129766465801L;
@@ -87,6 +87,7 @@ public class LinkList<T> implements Iterable<T>, Serializable {
         // 链表长度+1
         N++;
     }
+
 
     /**
      *
