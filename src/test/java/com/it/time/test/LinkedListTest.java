@@ -196,7 +196,7 @@ public class LinkedListTest {
         // 遍历链表，每循环一次，count++
         Node n = first;
         Node before = null;
-        int aa = length;
+//        int aa = length;
         while (n!=n.next){
             count++;
             if (count == 3){
@@ -205,17 +205,17 @@ public class LinkedListTest {
                 System.out.print(n.item+",");
                 count = 0;
                 n = n.next;
-                aa--;
-                if (aa <= length/2){
-                    return;
-                }
+//                aa--;
+//                if (aa <= length/2){
+//                    return;
+//                }
             }else {
                 before = n;
                 n = n.next;
             }
         }
-//        System.out.println();
-//        System.out.println(n.item);
+        System.out.println();
+        System.out.println(n.item);
     }
 
 }
