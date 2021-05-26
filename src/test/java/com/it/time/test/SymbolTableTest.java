@@ -3,7 +3,9 @@ package com.it.time.test;
 import com.it.api.OrderSymbolTable;
 import com.it.api.SymbolTable;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.SpringVersion;
 
 import java.util.Map;
 
@@ -50,5 +52,13 @@ public class SymbolTableTest {
             System.out.println(map);
         }
 
+    }
+
+    @Test
+    public void test03(){
+        String version = SpringVersion.getVersion();
+        String version1 = SpringBootVersion.getVersion();
+        System.out.println(version);
+        System.out.println(version1);
     }
 }
