@@ -208,6 +208,38 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
         }
     }
 
+    /**
+     * @return com.it.api.Queue<Key> 返回队列
+     * 功能说明: <br>
+     *    使用前序遍历，获取整个树中所有键
+     */
+    public Queue<Key> perErgodices(){
+        Queue<Key> keys = new Queue<>();
+        perErgodices(this.root,keys);
+        return keys;
+    }
+
+    /**
+     * @Param [x, keys] 跟结点和存储的队列
+     * 功能说明: <br>
+     *     使用前序遍历，把指定树x中的所有键放入到keys队列中
+     */
+    private void perErgodices(Node x,Queue<Key> keys){
+        if (x == null){
+            return;
+        }
+        // 1.把当前结点的key放入队列中
+        keys.enqueue(x.key);
+        // 2.找到当前结点的左子树，如果不为空，递归遍历左子树
+        if (x.left != null){
+            perErgodices(x.left,keys);
+        }
+        // 3.找到当前结点的右子树，如果不为空，递归遍历右子树
+        if (x.right != null){
+            perErgodices(x.right, keys);
+        }
+    }
+
     private class Node {
         /**
          * 存储键

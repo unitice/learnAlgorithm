@@ -1,6 +1,7 @@
 package com.it.time.test;
 
 import com.it.api.BinaryTree;
+import com.it.api.Queue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,7 +25,7 @@ public class BinaryTreeTest {
         bt.put(3,"ee");
         bt.put(9,"ss");
         bt.put(7,"ww");
-        System.out.println(bt.size());
+      /*  System.out.println(bt.size());
         bt.put(1,"cc");
         System.out.println(bt.size());
         System.out.println(bt.get(1));
@@ -33,6 +34,10 @@ public class BinaryTreeTest {
         bt.delete(5);
         System.out.println(bt.size());
         System.out.println(bt.getMax());
-        System.out.println(bt.getMin());
+        System.out.println(bt.getMin());*/
+        Queue<Integer> integers = bt.perErgodices();
+        for (Integer i : integers){
+            System.out.println(i);
+        }
     }
 }
