@@ -172,10 +172,10 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * @Param [x]
-     * @return com.it.api.BinaryTree<Key,Value>.Node
+     * @return com.it.api.BinaryTree<Key, Value>.Node
      * 功能说明: <br>
-     *     找出指定树x最小键所在结点
+     * 找出指定树x最小键所在结点
+     * @Param [x]
      */
     private Node min(Node x) {
         if (x.left != null) {
@@ -188,20 +188,20 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
     /**
      * @return Key 返回最大键值
      * 功能说明: <br>
-     *     找出整个树中最小的键
+     * 找出整个树中最小的键
      */
-    public Key getMax(){
+    public Key getMax() {
         return max(this.root).key;
     }
 
     /**
-     * @Param [x] 最大结点
-     * @return com.it.api.BinaryTree<Key,Value>.Node
+     * @return com.it.api.BinaryTree<Key, Value>.Node
      * 功能说明: <br>
-     *     找出指定树中最大key所在结点
+     * 找出指定树中最大key所在结点
+     * @Param [x] 最大结点
      */
-    private Node max(Node x){
-        if (x.right != null){
+    private Node max(Node x) {
+        if (x.right != null) {
             return max(x.right);
         } else {
             return x;
@@ -211,34 +211,159 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
     /**
      * @return com.it.api.Queue<Key> 返回队列
      * 功能说明: <br>
-     *    使用前序遍历，获取整个树中所有键
+     * 使用前序遍历，获取整个树中所有键
      */
-    public Queue<Key> perErgodices(){
+    public Queue<Key> perErgodices() {
         Queue<Key> keys = new Queue<>();
-        perErgodices(this.root,keys);
+        perErgodices(this.root, keys);
         return keys;
     }
 
     /**
      * @Param [x, keys] 跟结点和存储的队列
      * 功能说明: <br>
-     *     使用前序遍历，把指定树x中的所有键放入到keys队列中
+     * 使用前序遍历，把指定树x中的所有键放入到keys队列中
      */
-    private void perErgodices(Node x,Queue<Key> keys){
-        if (x == null){
+    private void perErgodices(Node x, Queue<Key> keys) {
+        if (x == null) {
             return;
         }
         // 1.把当前结点的key放入队列中
         keys.enqueue(x.key);
         // 2.找到当前结点的左子树，如果不为空，递归遍历左子树
-        if (x.left != null){
-            perErgodices(x.left,keys);
+        if (x.left != null) {
+            perErgodices(x.left, keys);
         }
         // 3.找到当前结点的右子树，如果不为空，递归遍历右子树
-        if (x.right != null){
+        if (x.right != null) {
             perErgodices(x.right, keys);
         }
     }
+
+    /**
+     * @return com.it.api.Queue<Key> 返回中序遍历
+     * 功能说明: <br>
+     * 使用中序遍历，获取整个树中所有的键
+     */
+    public Queue<Key> midErgodic() {
+        Queue<Key> keys = new Queue<>();
+        midErgodic(this.root, keys);
+        return keys;
+    }
+
+    /**
+     * @Param [x, keys] 结点，队列
+     * 功能说明: <br>
+     * 使用中序遍历，把指定树x中的所有键放入到keys队列中
+     */
+    private void midErgodic(Node x, Queue<Key> keys) {
+        if (x == null) {
+            return;
+        }
+        // 1.找到当前结点的左子树，如果不为空，递归遍历左子树
+        if (x.left != null) {
+            midErgodic(x.left, keys);
+        }
+        // 把当前结点key放入队列中；
+        keys.enqueue(x.key);
+        // 3.找到当前结点的右子树，如果不为空，递归遍历右子树
+        if (x.right != null) {
+            midErgodic(x.right, keys);
+        }
+    }
+
+
+    /**
+     * @return com.it.api.Queue<Key> key值的队列
+     * 功能说明: <br>
+     * 使用后序遍历，获取整个树中所有键
+     */
+    public Queue<Key> afterErgodic() {
+        Queue<Key> keys = new Queue<>();
+        afterErgodic(this.root, keys);
+        return keys;
+    }
+
+    /**
+     * @Param [x, keys] 当前结点，存储队列
+     * 功能说明: <br>
+     * 使用后序遍历，把指定树x中的所有键放入到keys队列中
+     */
+    private void afterErgodic(Node x, Queue<Key> keys) {
+        if (x == null) {
+            return;
+        }
+        // 1.找到当前结点的左子树，如果不为空遍历左子树
+        if (x.left != null) {
+            afterErgodic(x.left, keys);
+        }
+        // 2.遍历当前结点的右子树，如果不为空，遍历右子树
+        if (x.right != null) {
+            afterErgodic(x.right, keys);
+        }
+        // 3.把当前结点的key值放入队列中
+        keys.enqueue(x.key);
+    }
+
+    /**
+     * @return com.it.api.Queue<Key> 通过队列存储key
+     * 功能说明: <br>
+     *     使用层序遍历得到树中所有的键
+     */
+    public Queue<Key> layerErgodic() {
+        // 存key值
+        Queue<Key> keys = new Queue<>();
+        // 通过队列存树结点
+        Queue<Node> nodes = new Queue<>();
+        // 存入跟结点
+        nodes.enqueue(this.root);
+        while (!nodes.isEmpty()) {
+            Node dequeue = nodes.dequeue();
+            keys.enqueue(dequeue.key);
+            if (dequeue.left != null) {
+                nodes.enqueue(dequeue.left);
+            }
+            if (dequeue.right != null) {
+                nodes.enqueue(dequeue.right);
+            }
+        }
+        return keys;
+    }
+
+    /**
+     * @return int 树的深度
+     * 功能说明: <br>
+     *    计算整个树的最大深度
+     */
+    public int maxDepth() {
+        return maxDepth(this.root);
+    }
+
+    /**
+     * @Param [x] 当前跟结点
+     * @return int 返回最大深度
+     * 功能说明: <br>
+     *    递归获取整个树的最大深度
+     */
+    private int maxDepth(Node x){
+        if (x == null){
+            return 0;
+        }
+        int max = 0;
+        int leftMax = 0;
+        int rightMax = 0;
+        // 计算左子树最大深度
+        if (x.left != null){
+            leftMax = maxDepth(x.left);
+        }
+        // 计算右子树最大深度
+        if (x.right != null){
+            rightMax = maxDepth(x.right);
+        }
+        return max = leftMax > rightMax ? leftMax+1 : rightMax+1;
+    }
+
+
 
     private class Node {
         /**
