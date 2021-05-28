@@ -5,6 +5,9 @@ import com.it.api.Queue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author LY
  * @PackageName:com.it.time.test
@@ -65,10 +68,24 @@ public class BinaryTreeTest {
 
 
     @Test
-    public void test02(){
+    public void test02() {
         Node creaseTree = createCreaseTree(4);
         System.out.println(creaseTree);
     }
+
+    @Test
+    public void test03(){
+        List list = new ArrayList();
+        list.add("1111");
+        List list1 = list;
+
+        System.out.println(list1.get(0));
+        list1.add(0,"2222");
+        System.out.println(list.get(0));
+
+    }
+
+
 
     public static Node createCreaseTree(int n) {
         Node root = null;
@@ -84,11 +101,11 @@ public class BinaryTreeTest {
                 while (!queue.isEmpty()) {
                     //3.1从队列中拿出一个结点；
                     Node tmp = queue.dequeue();
-                   //3.2如果这个结点的左子结点不为空，则把这个左子结点添加到队列中；
+                    //3.2如果这个结点的左子结点不为空，则把这个左子结点添加到队列中；
                     if (tmp.left != null) {
                         queue.enqueue(tmp.left);
                     }
-                   //3.3如果这个结点的右子结点不为空，则把这个右子结点添加到队列中；
+                    //3.3如果这个结点的右子结点不为空，则把这个右子结点添加到队列中；
                     if (tmp.right != null) {
                         queue.enqueue(tmp.right);
                     }
