@@ -65,7 +65,7 @@ public class BinaryTreeTest {
 
 
     @Test
-    public void test03(){
+    public void test02(){
         Node creaseTree = createCreaseTree(4);
         System.out.println(creaseTree);
     }
