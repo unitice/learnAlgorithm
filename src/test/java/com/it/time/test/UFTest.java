@@ -5,7 +5,7 @@ import com.it.api.UFTreeWeighted;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -40,7 +40,7 @@ public class UFTest {
     }
 
     @Test
-    public void test03(){
+    public void test03() throws IOException {
         //创建输入流
         BufferedReader reader = new BufferedReader(new
                 InputStreamReader(UFTest.class.getClassLoader().getResourceAsStream("traffic_projec t.txt")));
