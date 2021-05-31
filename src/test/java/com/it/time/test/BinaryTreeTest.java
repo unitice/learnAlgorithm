@@ -74,17 +74,16 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void test03(){
+    public void test03() {
         List list = new ArrayList();
         list.add("1111");
         List list1 = list;
 
         System.out.println(list1.get(0));
-        list1.add(0,"2222");
+        list1.add(0, "2222");
         System.out.println(list.get(0));
 
     }
-
 
 
     public static Node createCreaseTree(int n) {
