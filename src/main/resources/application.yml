@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: learning-algorithm
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/me_test
+    username: root
+    password: root
+

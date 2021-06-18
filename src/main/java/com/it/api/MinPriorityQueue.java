@@ -1,7 +1,4 @@
 package com.it.api;
-
-import javax.validation.constraints.Min;
-
 /**
  * @author LY
  * @PackageName:com.it.api

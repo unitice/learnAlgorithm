@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.TestUserMapper">
+	<resultMap id="BaseResultMap" type="com.it.entity.TestUser">
+            <result column="id" property="id" />
+	        <result column="name" property="name" />
+	        <result column="age" property="age" />
+	        <result column="create_date" property="createDate" />
+	        <result column="money" property="money" />
+	        <result column="type" property="type" />
+		</resultMap>  
+    
+    <!-- 表字段 -->
+    <sql id="baseColumns">
+         t.id
+        , t.name
+        , t.age
+        , t.create_date
+        , t.money
+        , t.type
+        </sql> 
+    
+    <!-- 查询全部 -->
+    <select id="listAll" resultMap="BaseResultMap">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM test_user t
+	</select>
+ 
+ 	<!-- 根据主键获取单条记录 -->
+    <select id="getById" resultMap="BaseResultMap" parameterType="Integer">
+		SELECT         
+        	<include refid="baseColumns" />
+		FROM test_user t
+		WHERE id = #{id}
+	</select>
+
+	<!-- 插入全部字段 -->
+    <insert id="insert" parameterType="com.it.entity.TestUser"
+		keyProperty="id" keyColumn="id" useGeneratedKeys="true"
+    >
+	INSERT INTO test_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">	 
+        	        	    	name,
+    	        	    	age,
+    	        	    	create_date,
+    	        	    	money,
+    	        	    	type,
+    	        </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+        	        	        #{name},                   
+    	        	        #{age},                   
+    	        	        #{createDate},                   
+    	        	        #{money},                   
+    	        	        #{type},                   
+    	        </trim>
+	</insert>
+    
+    <!-- 插入不为NULL的字段 -->
+    <insert id="insertIgnoreNull" parameterType="com.it.entity.TestUser"
+        keyProperty="id" keyColumn="id" useGeneratedKeys="true"
+        >
+        INSERT INTO test_user    
+        <trim prefix="(" suffix=")" suffixOverrides=",">	 
+
+                                                                            <if test="name != null">
+                   name,
+                    </if>
+                                                                <if test="age != null">
+                   age,
+                    </if>
+                                                                <if test="createDate != null">
+                   create_date,
+                    </if>
+                                                                <if test="money != null">
+                   money,
+                    </if>
+                                                                <if test="type != null">
+                   type,
+                    </if>
+                                    </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">            
+                                                                            <if test="name != null" >
+                    #{name},                    
+                    </if>
+                                                                <if test="age != null" >
+                    #{age},                    
+                    </if>
+                                                                <if test="createDate != null" >
+                    #{createDate},                    
+                    </if>
+                                                                <if test="money != null" >
+                    #{money},                    
+                    </if>
+                                                                <if test="type != null" >
+                    #{type},                    
+                    </if>
+                                    </trim>
+    </insert>
+
+	<!-- 更新,更新全部字段 -->
+    <update id="update" parameterType="com.it.entity.TestUser">
+    UPDATE test_user
+     <set>		
+                                     name=#{name},        
+                                age=#{age},        
+                                create_date=#{createDate},        
+                                money=#{money},        
+                                type=#{type},        
+                   </set>	
+    WHERE id = #{id}
+    </update>  
+    
+    
+    <!-- 更新不为NULL的字段 -->
+    <update id="updateIgnoreNull" parameterType="com.it.entity.TestUser">
+    UPDATE test_user
+    <set>
+    	                                                <if test="name != null" >
+                name=#{name},                 
+                </if>
+                                                <if test="age != null" >
+                age=#{age},                 
+                </if>
+                                                <if test="createDate != null" >
+                create_date=#{createDate},                 
+                </if>
+                                                <if test="money != null" >
+                money=#{money},                 
+                </if>
+                                                <if test="type != null" >
+                type=#{type},                 
+                </if>
+                        </set>
+    WHERE id = #{id}
+    </update>
+
+		
+	<!-- 根据主键删除记录 -->
+	<delete id="delete" parameterType="com.it.entity.TestUser">
+		UPDATE test_user
+		SET is_deleted=1
+		WHERE id = #{id}
+	</delete>
+
+
+</mapper>

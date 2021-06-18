@@ -1,14 +1,18 @@
 package com.it.time.test;
 
-import com.it.Entity.User;
-import com.it.algorithm.test.DataCheckerUtils;
-import com.it.api.SequenceList;
+import com.it.entity.TestUser;
+import com.it.entity.User;
+import com.it.mapper.TestUserMapper;
+import com.it.mapper.UserMapper;
+import com.it.service.TestUserService;
+import com.it.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +25,7 @@ import java.util.List;
 @SpringBootTest
 public class UserTest {
 
-    @Test
+   /* @Test
     public void test01(){
         List lists = new ArrayList<>();
         User user = new User("ajf",12);
@@ -67,5 +71,55 @@ public class UserTest {
         long l1 = System.currentTimeMillis();
         System.out.println(l1 - l);
         System.out.println(l1);
+    }*/
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private TestUserService testUserService;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    public void test05(){
+        List<User> list = new ArrayList<>();
+        User user = new User();
+        user.setName("ll");
+        user.setPassword("22");
+        list.add(user);
+        User user1 = new User();
+        user1.setName("ff");
+        user1.setPassword("33");
+        list.add(user1);
+        User user2 = new User();
+        user2.setName("rr");
+        user2.setPassword("11");
+        list.add(user2);
+        User user3 = new User();
+        user3.setName("jj");
+        user3.setPassword("66");
+        list.add(user3);
+
+
+        userService.insertUserList(list);
+
+    }
+
+    @Test
+    public void test06(){
+        TestUser testUser = new TestUser();
+        testUser.setName("aaa");
+        testUser.setAge(11);
+        testUser.setMoney(BigDecimal.valueOf(11));
+        testUser.setCreateDate(new Date());
+        testUserService.insert(testUser);
+    }
+
+    @Test
+    public void test07(){
+        String test = "aaa";
+        userMapper.createNewTable(test);
     }
 }

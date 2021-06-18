@@ -1,6 +1,6 @@
 package com.it.time.test;
 
-import com.it.Entity.Node;
+import com.it.entity.Node;
 import com.it.api.LinkList;
 import com.it.api.TwoWayLinkList;
 import org.junit.jupiter.api.Test;
