@@ -1,11 +1,25 @@
 server:
   port: 33300
 spring:
+  clickhouse:
+    address: jdbc:clickhouse://192.168.66.129:8123
+    username: default
+    password:
+    db: default
+    socketTimeout: 6000
   application:
     name: learning-algorithm
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/me_test
+    url: jdbc:mysql://192.168.66.129/test
     username: root
     password: root
+  redis:
+    host: 192.168.66.129
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 0 # 设置最大连接数 0 为无限
+
 
