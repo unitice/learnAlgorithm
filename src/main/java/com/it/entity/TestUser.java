@@ -1,8 +1,11 @@
 package com.it.entity;
 
+import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 import java.math.BigDecimal;
-
+@Data
 public class TestUser {
 	private Integer id;
 	private String name;
@@ -10,6 +13,9 @@ public class TestUser {
 	private Date createDate;
 	private BigDecimal money;
 	private Byte type;
+	private MultipartFile file1;
+	private MultipartFile file2;
+	private MultipartFile file3;
 
 	public void setId(Integer id) {
 		this.id = id;

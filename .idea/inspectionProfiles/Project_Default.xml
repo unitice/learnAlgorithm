@@ -30,7 +30,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="date,PackageName:com.it.time.test,ClassName:UserTest,Param,return,PackageName:com.it.api,ClassName:SequenceList,PackageName:com.it.Entity,ClassName:Node,ClassName:LinkedListTest,ClassName:LinkList,ClassName:Stack,ClassName:StackTest,ClassName:SymbolTable,ClassName:SymbolTableTest,ClassName:BinaryTreeTest,PackageName:com.it.enumerate,ClassName:SeasonEnum,PackageName:com.proinnova.util,ClassName:ListUtils,ClassName:CollectionUtils,PackageName:com.it.Util,ClassName:UserUtils,PackageName:com.it.config,ClassName:RedisConfig,PackageName:com.it.mysql.test,ClassName:MysqlTest" />
+      <option name="myAdditionalJavadocTags" value="date,PackageName:com.it.time.test,ClassName:UserTest,Param,return,PackageName:com.it.api,ClassName:SequenceList,PackageName:com.it.Entity,ClassName:Node,ClassName:LinkedListTest,ClassName:LinkList,ClassName:Stack,ClassName:StackTest,ClassName:SymbolTable,ClassName:SymbolTableTest,ClassName:BinaryTreeTest,PackageName:com.it.enumerate,ClassName:SeasonEnum,PackageName:com.proinnova.util,ClassName:ListUtils,ClassName:CollectionUtils,PackageName:com.it.Util,ClassName:UserUtils,PackageName:com.it.config,ClassName:RedisConfig,PackageName:com.it.mysql.test,ClassName:MysqlTest,PackageName:com.it.service.Impl,ClassName:UserServiceImpl1" />
     </inspection_tool>
     <inspection_tool class="SerializableHasSerialVersionUIDField" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoreAnonymousInnerClasses" value="false" />

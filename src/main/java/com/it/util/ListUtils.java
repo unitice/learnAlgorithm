@@ -2,6 +2,7 @@ package com.it.util;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author LY
@@ -18,7 +19,7 @@ public class ListUtils {
      * @param list 原list
      * @return true表示不为null false表示为null
      */
-    public static boolean isNotEmpty(List<?> list){
+    public static boolean isNotEmpty(List list){
         return list != null && !list.isEmpty();
     }
 
@@ -26,10 +27,27 @@ public class ListUtils {
      * 去除list表里面的null数据
      * @param list 原list集合
      */
-    public static void goEmpty(List<?> list){
+    public static void goEmpty(List list){
         list.removeAll(Collections.singleton(null));
     }
 
+    /**
+     * 截取list集合前size长度数据
+     * @param list 原list集合
+     * @param size size长度
+     * @return 返回值为新list集合为原始list集合的子集
+     */
+    public static List limit(List list , Integer size) {
+        return isNotEmpty(list) ? (List) list.stream().limit(size).collect(Collectors.toList()) : null;
+    }
+
+    /**
+     * 截取list集合后n个元素
+     * @param list 原list集合
+     * @param size 长度
+     * @return 截取后的list集合
+     */
+    public static List skip(List list,Integer size) { return isNotEmpty(list) ? (List) list.stream().skip(size).collect(Collectors.toList()) : null;}
 
 
 }

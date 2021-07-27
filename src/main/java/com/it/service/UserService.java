@@ -16,4 +16,6 @@ public interface UserService {
 
     Map<String, Object>  insertUserList(List<User> users);
 
+    String SystemOut();
+
 }

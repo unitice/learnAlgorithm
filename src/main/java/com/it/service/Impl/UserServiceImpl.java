@@ -19,12 +19,16 @@ import java.util.Map;
  * @date 2021/6/15 9:33
  * 类说明: <br>
  */
-@Service
+@Service(value = "user")
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    public void setUserMapper(UserMapper userMapper){
+        this.userMapper = userMapper;
+    }
 
     @Override
     public Map<String, Object> insertUserList(List<User> users) {
@@ -48,5 +52,10 @@ public class UserServiceImpl implements UserService {
             // 自动回滚
 //            throw new RuntimeException(e.getMessage());
         }
+    }
+
+    @Override
+    public String SystemOut() {
+        return "实现类1";
     }
 }
